@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DREEM ACADEMY</title>
+
+    <style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+    }
+
+    header {
+        background: linear-gradient(135deg, #1E3A5F, #3A6EA5);
+        color: white;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        letter-spacing: 2px;
+    }
+
+    nav {
+        background: #3498db;
+        padding: 12px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+        color: #ecf0f1;
+        margin: 0 18px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s, border-bottom 0.3s;
+    }
+
+    nav a:hover {
+        color: #f1c40f;
+        border-bottom: 2px solid #f1c40f;
+        padding-bottom: 4px;
+    }
+
+    section {
+        padding: 25px;
+        background: white;
+        margin: 25px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+        transition: transform 0.3s;
+    }
+
+    section:hover {
+        transform: translateY(-5px);
+    }
+
+    h2 {
+        color: #3498db;
+        border-left: 5px solid #3498db;
+        padding-left: 10px;
+    }
+
+    p {
+        color: #CCC;
+        line-height: 1.6;
+    }
+
+    input {
+        padding: 10px;
+        margin: 8px 0;
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    button {
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        background: linear-gradient(135deg, #3498db, #1E3A5F);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+        background: linear-gradient(135deg, #1E3A5F, #3498db);
+        transform: scale(1.02);
+    }
+
+    .output {
+        margin-top: 12px;
+        font-weight: bold;
+        color: #2c3e50;
+        background: #ecf6ff;
+        padding: 10px;
+        border-radius: 6px;
+    }
+
+    footer {
+        background: #1E3A5F;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 20px;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>DREEM ACADEMY</h1>
+        <p>AN ENGLISH MEDIUM SCHOOL </p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#chatbot">AI Chatbot</a>
+        <a href="#admission">Admission AI</a>
+        <a href="#performance">Performance AI</a>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome</h2>
+        <p>
+            Welcome to DREEM ACADEMY, where we nurture curiosity, inspire achievement, and prepare students for a bright
+            future. Our school is a vibrant learning community dedicated to academic excellence, personal growth, and
+            lifelong learning. We are glad you are here.
+        </p>
+    </section>
+
+    <section id="chatbot">
+        <h2>🤖 AI School Chatbot</h2>
+        <input type="text" id="chatInput" placeholder="Ask about fees, admission, exams...">
+        <button onclick="chatbot()">Ask</button>
+        <div class="output" id="chatOutput"></div>
+    </section>
+
+    <section id="admission">
+        <h2>🎯 AI Admission Eligibility Checker</h2>
+        <input type="number" id="marks" placeholder="Enter student marks (%)">
+        <input type="number" id="age" placeholder="Enter student age">
+        <button onclick="checkAdmission()">Check Eligibility</button>
+        <div class="output" id="admissionResult"></div>
+    </section>
+
+    <section id="performance">
+        <h2>📊 AI Student Performance Advisor</h2>
+        <input type="number" id="attendance" placeholder="Attendance (%)">
+        <input type="number" id="internalMarks" placeholder="Internal marks">
+        <button onclick="analyzePerformance()">Analyze</button>
+        <div class="output" id="performanceResult"></div>
+    </section>
+
+    <footer>
+        <p>© 2026 DREEM ACADEMY  School Website | BCA Artificial Intelligence Project</p>
+    </footer>
+
+    <script>
+        // AI CHATBOT LOGIC
+        function chatbot() {
+            let input = document.getElementById("chatInput").value.toLowerCase();
+            let response = "Sorry, I did not understand your question.";
+
+            if (input.includes("fees")) {
+                response = "The annual school fee is ₹30,000.";
+            } else if (input.includes("admission")) {
+                response = "Admissions start from March and end in June.";
+            } else if (input.includes("exam")) {
+                response = "Examinations are conducted in April and December.";
+            } else if (input.includes("timing")) {
+                response = "School timing is from 9 AM to 3 PM.";
+            }
+
+            document.getElementById("chatOutput").innerText = response;
+        }
+
+        // AI ADMISSION ELIGIBILITY
+        function checkAdmission() {
+            let marks = parseInt(document.getElementById("marks").value);
+            let age = parseInt(document.getElementById("age").value);
+            let result = "";
+
+            if (marks >= 60 && age >= 14) {
+                result = "Eligible for Admission ✅";
+            } else {
+                result = "Not Eligible for Admission ❌";
+            }
+
+            document.getElementById("admissionResult").innerText = result;
+        }
+
+        // AI PERFORMANCE ANALYSIS
+        function analyzePerformance() {
+            let attendance = parseInt(document.getElementById("attendance").value);
+            let marks = parseInt(document.getElementById("internalMarks").value);
+            let performance = "";
+
+            if (attendance >= 75 && marks >= 60) {
+                performance = "Good Performance 👍";
+            } else if (attendance >= 60 && marks >= 40) {
+                performance = "Average Performance ⚠️";
+            } else {
+                performance = "Poor Performance ❌";
+            }
+
+            document.getElementById("performanceResult").innerText = performance;
+        }
+    </script>
+
+</body>
+
+</html>
